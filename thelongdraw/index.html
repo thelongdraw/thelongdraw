@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Long Draw — Things Worth Carrying</title>
+  <meta name="description" content="The Long Draw — Curated goods for a deliberate life. Brass, leather, steel. Things worth carrying." />
+  <meta property="og:title" content="The Long Draw" />
+  <meta property="og:description" content="Curated goods for a deliberate life. Brass, leather, steel. Things worth carrying." />
+  <meta property="og:url" content="https://thelongdraw.com" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="/" class="nav-logo">The Long Draw</a>
+    <div class="nav-links">
+      <a href="pages/shop.html">Shop</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+    <button class="nav-cart" id="cart-btn" aria-label="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Curated goods &mdash; Philadelphia</p>
+    <h1 class="hero-title">Things worth<br>carrying.</h1>
+    <p class="hero-sub">Goods for a deliberate life. For the man who knows what he wants and doesn't rush to get there.</p>
+    <a href="pages/shop.html" class="btn">Shop the collection &rarr;</a>
+  </section>
+
+  <div class="marquee-bar">
+    <div class="marquee-inner">
+      <span>Brass &amp; Steel</span><span>Full-grain leather</span><span>Patina welcome</span><span>Built to last</span><span>No plastic</span><span>No rush</span><span>Earned, not bought</span><span>Against disposable everything</span>
+      <span>Brass &amp; Steel</span><span>Full-grain leather</span><span>Patina welcome</span><span>Built to last</span><span>No plastic</span><span>No rush</span><span>Earned, not bought</span><span>Against disposable everything</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <p class="section-label">The collection</p>
+    <div class="product-grid" id="product-grid">
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+    </div>
+    <div class="section-footer">
+      <a href="pages/shop.html" class="btn">View all products &rarr;</a>
+    </div>
+  </section>
+
+  <section class="manifesto-section">
+    <div class="manifesto">
+      <p><strong>The first draw of a cigarette. The long pull of a flask. The slow strike of a match.</strong></p>
+      <p>This is The Long Draw — goods for the unhurried. We curate things built before planned obsolescence was invented. Things that carry better after a year than they did on day one.</p>
+      <p>Not the cheapest option. The last one you'll buy.</p>
+      <a href="pages/about.html" class="btn" style="margin-top:1.5rem;">Our story &rarr;</a>
+    </div>
+  </section>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h3>Curated by hand</h3>
+      <p>Every product on this site has been chosen deliberately. If it doesn't belong in the same jacket pocket, it doesn't belong here.</p>
+    </div>
+    <div class="col-block">
+      <h3>Built to last</h3>
+      <p>Brass, steel, full-grain leather, cast iron. Materials that age with you. Patina welcome.</p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <span class="footer-logo">The Long Draw</span>
+    <div class="footer-links">
+      <a href="pages/shop.html">Shop</a>
+      <a href="pages/about.html">About</a>
+      <a href="pages/contact.html">Contact</a>
+      <a href="https://instagram.com/thelongdraw" target="_blank">Instagram</a>
+      <a href="https://tiktok.com/@thelongdraw" target="_blank">TikTok</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 The Long Draw</span>
+  </footer>
+
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <span class="cart-title">Your cart</span>
+      <button class="cart-close" id="cart-close">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer"></div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <script src="js/shopify.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — The Long Draw</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">The Long Draw</a>
+    <div class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <button class="nav-cart" id="cart-btn" aria-label="Cart">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <div class="page-header">
+    <h1>The collection</h1>
+    <p>Things worth carrying. Every one chosen by hand.</p>
+  </div>
+
+  <section class="shop-grid-section">
+    <div class="product-grid" id="product-grid">
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+      <div class="product-skeleton"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <span class="footer-logo">The Long Draw</span>
+    <div class="footer-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://instagram.com/thelongdraw" target="_blank">Instagram</a>
+    </div>
+    <span class="footer-copy">&copy; 2025 The Long Draw</span>
+  </footer>
+
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <span class="cart-title">Your cart</span>
+      <button class="cart-close" id="cart-close">&times;</button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer"></div>
+  </div>
+  <div class="cart-overlay" id="cart-overlay"></div>
+
+  <script src="../js/shopify.js"></script>
+  <script src="../js/cart.js"></script>
+  <script>
+    async function loadAllProducts() {
+      const grid = document.getElementById('product-grid');
+      try {
+        const products = await getProducts(24);
+        if (products.length === 0) {
+          grid.innerHTML = '<p style="padding:2rem;color:#6b6760;font-size:14px;grid-column:1/-1;">Products coming soon.</p>';
+          return;
+        }
+        grid.innerHTML = products.map(p => {
+          const img = p.images.edges[0]?.node.url;
+          const price = p.priceRange.minVariantPrice;
+          return `
+            <a href="product.html?handle=${p.handle}" class="product-card">
+              ${img ? `<img class="product-img" src="${img}" alt="${p.title}" />` : `<div class="product-img-placeholder">No image</div>`}
+              <p class="product-name">${p.title}</p>
+              <p class="product-material">${p.description?.split('.')[0] || ''}</p>
+              <p class="product-price">${formatPrice(price.amount, price.currencyCode)}</p>
+            </a>
+          `;
+        }).join('');
+      } catch(e) {
+        grid.innerHTML = '<p style="padding:2rem;color:#6b6760;font-size:14px;grid-column:1/-1;">Products coming soon.</p>';
+      }
+    }
+    loadAllProducts();
+  </script>
+</body>
+</html>
