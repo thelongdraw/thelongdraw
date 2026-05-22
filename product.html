@@ -843,7 +843,9 @@ async function createCart() {
   const { data } = await shopifyFetch(`
     mutation { cartCreate { cart { id checkoutUrl } } }
   `);
-  return data.cartCreate.cart;
+  const c = data.cartCreate.cart;
+  c.checkoutUrl = 'https://feez07-2e.myshopify.com' + new URL(c.checkoutUrl).pathname + new URL(c.checkoutUrl).search;
+  return c;
 }
 
 async function addToCart(cartId, merchandiseId, quantity = 1) {
@@ -865,7 +867,7 @@ async function addToCart(cartId, merchandiseId, quantity = 1) {
       }}}
     }`, { cartId, lines: [{ merchandiseId, quantity }] });
   const cart = data.cartLinesAdd.cart;
-    cart.checkoutUrl = cart.checkoutUrl.replace('www.thelongdraw.com', 'feez07-2e.myshopify.com').replace('thelongdraw.com', 'feez07-2e.myshopify.com');
+    cart.checkoutUrl = 'https://feez07-2e.myshopify.com' + new URL(cart.checkoutUrl).pathname + new URL(cart.checkoutUrl).search;
     return cart;
 }
 
@@ -888,7 +890,7 @@ async function removeFromCart(cartId, lineId) {
       }}}
     }`, { cartId, lineIds: [lineId] });
   const cart2 = data.cartLinesRemove.cart;
-    cart2.checkoutUrl = cart2.checkoutUrl.replace('www.thelongdraw.com', 'feez07-2e.myshopify.com').replace('thelongdraw.com', 'feez07-2e.myshopify.com');
+    cart2.checkoutUrl = 'https://feez07-2e.myshopify.com' + new URL(cart2.checkoutUrl).pathname + new URL(cart2.checkoutUrl).search;
     return cart2;
 }
 
