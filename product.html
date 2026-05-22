@@ -864,7 +864,9 @@ async function addToCart(cartId, merchandiseId, quantity = 1) {
         }}
       }}}
     }`, { cartId, lines: [{ merchandiseId, quantity }] });
-  return data.cartLinesAdd.cart;
+  const cart = data.cartLinesAdd.cart;
+    cart.checkoutUrl = cart.checkoutUrl.replace('www.thelongdraw.com', 'feez07-2e.myshopify.com').replace('thelongdraw.com', 'feez07-2e.myshopify.com');
+    return cart;
 }
 
 async function removeFromCart(cartId, lineId) {
@@ -885,7 +887,9 @@ async function removeFromCart(cartId, lineId) {
         }}
       }}}
     }`, { cartId, lineIds: [lineId] });
-  return data.cartLinesRemove.cart;
+  const cart2 = data.cartLinesRemove.cart;
+    cart2.checkoutUrl = cart2.checkoutUrl.replace('www.thelongdraw.com', 'feez07-2e.myshopify.com').replace('thelongdraw.com', 'feez07-2e.myshopify.com');
+    return cart2;
 }
 
 function formatPrice(amount, currency = 'USD') {
